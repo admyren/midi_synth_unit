@@ -39,21 +39,21 @@ def square(x):
    return res
 
 def format_print(file, x):
-   if sine_out < 0:
-      if sine_out > -10:
+   if x < 0:
+      if x > -10:
          file.write('%u,    ' % x)
-      elif sine_out > -100:
+      elif x > -100:
          file.write('%u,   ' % x)
-      elif sine_out > -1000:
+      elif x > -1000:
          file.write('%u,  ' % x)
       else:
          file.write('%u, ' % x)
    else:
-      if sine_out < 10:
+      if x < 10:
          file.write('%u,     ' % x)
-      elif sine_out < 100:
+      elif x < 100:
          file.write('%u,    ' % x)
-      elif sine_out < 1000:
+      elif x < 1000:
          file.write('%u,   ' % x)
       else:
          file.write('%u,  ' % x)
@@ -81,9 +81,9 @@ with open(source_file, 'w') as out_file:
    for i in range(table_size-1):
       if i % table_width == 0 and i != 0:
          out_file.write('\n\t')
-      sine_out = int(table_amp * math.sin(i * (2*math.pi/table_size)))
+      sample = int(table_amp * math.sin(i * (2*math.pi/table_size)))
       
-      format_print(out_file, sine_out)
+      format_print(out_file, sample)
    
    out_file.write('%u\n};' % int(table_amp * math.sin((table_size-1) * (2*math.pi/table_size))))
 
@@ -92,9 +92,9 @@ with open(source_file, 'w') as out_file:
    for i in range(table_size-1):
       if i % table_width == 0 and i != 0:
          out_file.write('\n\t')
-      sine_out = int(table_amp * triangle(i * (2*math.pi/table_size)))
+      sample = int(table_amp * triangle(i * (2*math.pi/table_size)))
       
-      format_print(out_file, sine_out)
+      format_print(out_file, sample)
    
    out_file.write('%u\n};' % int(table_amp * triangle((table_size-1) * (2*math.pi/table_size))))
 
@@ -105,9 +105,9 @@ with open(source_file, 'w') as out_file:
    for i in range(table_size-1):
       if i % table_width == 0 and i != 0:
          out_file.write('\n\t')
-      sine_out = int(table_amp * saw1(i * (2*math.pi/table_size)))
+      sample = int(table_amp * saw1(i * (2*math.pi/table_size)))
       
-      format_print(out_file, sine_out)
+      format_print(out_file, sample)
    
    out_file.write('%u\n};' % int(table_amp * saw1((table_size-1) * (2*math.pi/table_size))))
 
@@ -118,9 +118,9 @@ with open(source_file, 'w') as out_file:
    for i in range(table_size-1):
       if i % table_width == 0 and i != 0:
          out_file.write('\n\t')
-      sine_out = int(table_amp * saw2(i * (2*math.pi/table_size)))
+      sample = int(table_amp * saw2(i * (2*math.pi/table_size)))
       
-      format_print(out_file, sine_out)
+      format_print(out_file, sample)
    
    out_file.write('%u\n};' % int(table_amp * saw2((table_size-1) * (2*math.pi/table_size))))
 
@@ -131,9 +131,9 @@ with open(source_file, 'w') as out_file:
    for i in range(table_size-1):
       if i % table_width == 0 and i != 0:
          out_file.write('\n\t')
-      sine_out = int(table_amp * square(i * (2*math.pi/table_size)))
+      sample = int(table_amp * square(i * (2*math.pi/table_size)))
       
-      format_print(out_file, sine_out)
+      format_print(out_file, sample)
    
    out_file.write('%u\n};' % int(table_amp * square((table_size-1) * (2*math.pi/table_size))))
  
